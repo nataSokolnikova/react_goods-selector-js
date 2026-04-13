@@ -20,11 +20,11 @@ export const App = () => {
 
   const isSelected = selectedGood !== '';
 
-  const handleSelect = good => {
+  const handleSelectGood = good => {
     setSelectedGood(good);
   };
 
-  const handleClear = () => {
+  const handleClearSelection = () => {
     setSelectedGood('');
   };
 
@@ -38,7 +38,7 @@ export const App = () => {
             data-cy="ClearButton"
             type="button"
             className="delete ml-3"
-            onClick={handleClear}
+            onClick={handleClearSelection}
           />
         )}
       </h1>
@@ -54,45 +54,26 @@ export const App = () => {
                 data-cy="Good"
                 className={isGoodSelected ? 'has-background-success-light' : ''}
               >
-                {/* <td>
-                  {!isGoodSelected ? (
-                      <button
-                        data-cy="AddButton"
-                        type="button"
-                        className="button"
-                        onClick={() => handleSelect(good)}
-                      >
-                        +
-                      </button>
-                    ) : (
-                      <button
-                        data-cy="RemoveButton"
-                        type="button"
-                        className="button is-info"
-                        onClick={handleClear}
-                      >
-                        -
-                      </button>
-                    )}
-                </td> */}
                 <td>
-                  {!isSelected && (
+                  {/* AddButton: показывается для всех НЕ выбранных товаров */}
+                  {!isGoodSelected && (
                     <button
                       data-cy="AddButton"
                       type="button"
                       className="button"
-                      onClick={() => handleSelect(good)}
+                      onClick={() => handleSelectGood(good)}
                     >
                       +
                     </button>
                   )}
 
+                  {/* RemoveButton: только для выбранного товара */}
                   {isGoodSelected && (
                     <button
                       data-cy="RemoveButton"
                       type="button"
                       className="button is-info"
-                      onClick={handleClear}
+                      onClick={handleClearSelection}
                     >
                       -
                     </button>
